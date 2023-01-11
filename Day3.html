@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form>
+    <input type="text" id="display" disabled>
+    <br>
+    <input type="button" value="1" onclick="addNumber(this)">
+    <input type="button" value="2" onclick="addNumber(this)">
+    <input type="button" value="3" onclick="addNumber(this)">
+    <input type="button" value="+" onclick="addOperator(this)">
+    <br>
+    <input type="button" value="4" onclick="addNumber(this)">
+    <input type="button" value="5" onclick="addNumber(this)">
+    <input type="button" value="6" onclick="addNumber(this)">
+    <input type="button" value="-" onclick="addOperator(this)">
+    <br>
+    <input type="button" value="7" onclick="addNumber(this)">
+    <input type="button" value="8" onclick="addNumber(this)">
+    <input type="button" value="9" onclick="addNumber(this)">
+    <input type="button" value="*" onclick="addOperator(this)">
+    <br>
+    <input type="button" value="c" onclick="clearDisplay()">
+    <input type="button" value="0" onclick="addNumber(this)">
+    <input type="button" value="=" onclick="calculate()">
+    <input type="button" value="/" onclick="addOperator(this)">
+    <br>
+</form>
+<script>const display = document.querySelector("#display");
+  let leftOperand = "";
+  let rightOperand = "";
+  let operator = "";
+  
+  function addNumber(elem) {
+      if (!operator) {
+          leftOperand += elem.value;
+          display.value = leftOperand;
+      } else {
+          rightOperand += elem.value;
+          display.value = rightOperand;
+      }
+  }
+  
+  function addOperator(elem) {
+      operator = elem.value;
+  }
+  
+  function clearDisplay() {
+      leftOperand = "";
+      rightOperand = "";
+      operator = "";
+      display.value = "";
+  }
+  
+  function calculate() {
+      let result;
+      switch (operator) {
+          case "+":
+              result = parseFloat(leftOperand) + parseFloat(rightOperand);
+              break;
+          case "-":
+              result = parseFloat(leftOperand) - parseFloat(rightOperand);
+              break;
+          case "*":
+              result = parseFloat(leftOperand) * parseFloat(rightOperand);
+              break;
+          case "/":
+              result = parseFloat(leftOperand) / parseFloat(rightOperand);
+              break;
+      }
+      display.value = result;
+  }
+  </script>
+</body>
+</html>
