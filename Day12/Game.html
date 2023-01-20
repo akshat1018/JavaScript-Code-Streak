@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz</title>
+  <style>
+    #quiz-container {
+    width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+#quiz-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#answers button {
+    margin: 8px;
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+#answers button:hover {
+    background-color: #3e8e41;
+}
+#result {
+    margin-top: 16px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+  </style>
+  
+</head>
+<body>
+  <div id="quiz-container">
+    <h1>Quiz</h1>
+    <form id="quiz-form">
+        <p id="question"></p>
+        <div id="answers"></div>
+    </form>
+    <div id="result"></div>
+</div>
+<script src="Game.js"></script>
+
+
+</body>
+</html>
