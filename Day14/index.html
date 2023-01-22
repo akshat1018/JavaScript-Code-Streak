@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        #todo-app {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #todo-form {
+            display: flex;
+            align-items: center;
+        }
+
+        #new-todo {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px 0 0 4px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="todo-app">
+        <form id="todo-form">
+            <input type="text" id="new-todo" placeholder="Add a new to-do">
+            <button type="submit">Add</button>
+        </form>
+        <ul id="todo-list"></ul>
+    </div>
+<script>
+    // Get elements
+const form = document.querySelector('#todo-form');
+const input = document.querySelector('#new-todo');
+const todoList = document.querySelector('#todo-list');
+
+// Get existing todos from local storage
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+// Render todos
+function renderTodos() {
+  todoList.innerHTML = '';
+  todos.forEach((todo, index) => {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      <span>${todo}</span>
+      <button data-index=${index}>Delete</button>
+    `;
+    todoList.appendChild(li);
+  });
+}
+
+// Add todo
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const newTodo = input.value;
+  todos.push(newTodo);
+  input.value = '';
+  localStorage.setItem('todos', JSON.stringify(todos));
+  renderTodos();
+});
+
+// Delete todo
+todoList.addEventListener('click', e => {
+  if (e.target.tagName === 'BUTTON') {
+    const index = e.target.dataset.index;
+    todos.splice(index, 1);
+    localStorage.setItem('todos', JSON.stringify(todos));
+    renderTodos();
+  }
+});
+
+renderTodos();
+
+</script>
+</body>
+
+</html>
