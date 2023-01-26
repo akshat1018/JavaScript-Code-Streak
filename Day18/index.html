@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Latest News Headlines</h1>
+    <ul id="news-list">
+      <!-- News items will be dynamically added here using JavaScript -->
+    </ul>
+    <script>
+      // Fetch news from multiple sources
+      const sources = ['bbc-news', 'cnn', 'fox-news'];
+      const apiKey = '516c4edcd89541b9b4fa2a87e0d018da';
+      let newsList = document.getElementById('news-list');
+
+      sources.forEach(source => {
+        fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=${apiKey}`)
+          .then(response => response.json())
+          .then(data => {
+            data.articles.forEach(article => {
+              // Create a new list item for each article
+              let listItem = document.createElement('li');
+              listItem.innerHTML = `<h2>${article.title}</h2><p>${article.description}</p>`;
+              newsList.appendChild(listItem);
+            });
+          })
+          .catch(error => console.log(error));
+      });
+    </script>
+  </body>
+</html>
