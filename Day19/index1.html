@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Unit Converter</h1>
+  <form>
+    <label for="unit-from">Convert From:</label>
+    <select id="unit-from">
+      <option value="meters">Meters</option>
+      <option value="kilometers">Kilometers</option>
+      <option value="miles">Miles</option>
+    </select>
+    <br>
+    <label for="unit-to">Convert To:</label>
+    <select id="unit-to">
+      <option value="meters">Meters</option>
+      <option value="kilometers">Kilometers</option>
+      <option value="miles">Miles</option>
+    </select>
+    <br>
+    <label for="value">Value:</label>
+    <input type="text" id="value">
+    <br>
+    <button type="button" id="convert-button">Convert</button>
+  </form>
+  <div id="result"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
